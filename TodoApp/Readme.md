@@ -11,3 +11,7 @@ I'm using React useState and contenxt API for state management.
 I'm using localstorage to store users todo tasks.
 
 enjoy!
+
+## Preview here!
+
+https://todoappvp.netlify.app/
