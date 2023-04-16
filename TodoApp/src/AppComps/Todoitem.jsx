@@ -14,7 +14,7 @@ export default function Todoitem({ task }) {
             completedTask(task.id);
           }}
         />
-        {task.taskName}
+        <span>{task.taskName}</span>
       </label>
       <div className='action-group'>
         <button

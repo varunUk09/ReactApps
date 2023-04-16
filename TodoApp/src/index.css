@@ -24,8 +24,12 @@ html {
 }
 
 
-#root {
+body {
   background-color: var(--primary-clr);
+  padding: 1rem;
+}
+
+#root {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +42,17 @@ html {
   border-radius: 0.3rem;
   width: 100%;
   max-width: 42.5rem;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.container::before {
+  content: "Todo App";
+  font-weight: bold;
+  font-size: 2.2rem;
+  text-align: center;
+  display: block;
+  margin-bottom: 2rem;
 }
 
 .add-task-frm input {
@@ -148,4 +163,34 @@ html {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 0.2px solid var(--primary-clr);
+}
+
+.add-task-frm .input-row {
+  display: flex;
+}
+
+.add-task-frm .input-row .clear-list svg {
+  width: 3rem;
+  display: block;
+  aspect-ratio: 1/1;
+}
+
+.add-task-frm .input-row .clear-list svg path {
+  fill: red !important;
+}
+
+.add-task-frm .clear-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  background: white;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+.todo-list>li input[type="checkbox"]:checked+span {
+  text-decoration: line-through;
+  font-style: italic;
 }

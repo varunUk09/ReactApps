@@ -51,8 +51,13 @@ export default function App() {
     updateTaskList(newTaskList);
   };
 
+  const clearTaskList = () => {
+    localStorage.setItem("ITEM", JSON.stringify([]));
+    setTaskList("");
+  };
+
   return (
-    <Todocontext.Provider value={{ deleteTask, completedTask, updateTask, task, handleSubmit, taskList }}>
+    <Todocontext.Provider value={{ clearTaskList, deleteTask, completedTask, updateTask, task, handleSubmit, taskList }}>
       <div className='container'>
         <AdditemForm />
         <Todoitems />
