@@ -46,9 +46,8 @@ html {
   outline: none;
   color: var(--secondary-clr);
   padding: 1rem 1.6rem;
-  font-style: italic;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .add-task-frm {
@@ -62,9 +61,15 @@ html {
 }
 
 .todo-list>li input[type="checkbox"] {
-  width: 2rem;
-  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
   margin-right: 0.8rem;
+  max-width: 2rem;
+  max-height: 2rem;
+}
+
+.no-task-msg {
+  font-size: 1.5rem;
 }
 
 .todo-list .task-name {
@@ -73,6 +78,7 @@ html {
   letter-spacing: 0.1rem;
   display: flex;
   align-items: center;
+  word-break: break-word;
 }
 
 .todo-list .action-group .action-cta {
@@ -109,6 +115,7 @@ html {
   bottom: -3.5rem;
   display: flex;
   flex-direction: column;
+  z-index: 999 !important;
 }
 
 .todo-list .action-group:not(.show) .action-popover,

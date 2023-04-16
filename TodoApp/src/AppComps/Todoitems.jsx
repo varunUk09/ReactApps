@@ -1,22 +1,19 @@
-import ActionPopover from "./ActionPopover";
+import { useContext } from "react";
 import Todoitem from "./Todoitem";
+import { Todocontext } from "../App.jsx";
 
 export default function Todoitems() {
+  const { taskList } = useContext(Todocontext);
   return (
     <>
       <ul className='todo-list'>
-        <li>
-          <label className='task-name cursor'>
-            <input type='checkbox' className='cursor' />
-            Getting an invite for dribble
-          </label>
-          <div className='action-group'>
-            <button className='action-cta cursor'>
-              <span>...</span>
-            </button>
-            <ActionPopover />
-          </div>
-        </li>
+        {taskList.length > 0 ? (
+          taskList.map(task => {
+            return <Todoitem key={task.id} task={task} />;
+          })
+        ) : (
+          <span className='no-task-msg'>No tasks added</span>
+        )}
       </ul>
     </>
   );

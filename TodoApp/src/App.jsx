@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import AdditemForm from "./AppComps/AdditemForm";
 import Todoitems from "./AppComps/Todoitems";
 
+export const Todocontext = createContext();
 export default function App() {
+  let tasks = JSON.parse(localStorage.getItem("ITEM")) || [];
+  // console.log("localstorage", tasks);
   const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(tasks);
   const handleSubmit = e => {
     e.preventDefault();
     let newTaskList = [
@@ -12,25 +15,48 @@ export default function App() {
       {
         id: crypto.randomUUID(),
         taskName: task,
+        completed: false,
       },
     ];
-    setTaskList(newTaskList);
-    console.log(taskList);
+    updateTaskList(newTaskList);
   };
+
+  const updateTaskList = newTaskList => {
+    localStorage.setItem("ITEM", JSON.stringify(newTaskList));
+    setTaskList(newTaskList);
+    setTask("");
+  };
+
   const updateTask = value => {
     setTask(value);
   };
-  const formProp = {
-    onSubmit: handleSubmit,
-    task: task,
-    setTask: updateTask,
+
+  const completedTask = id => {
+    let newTaskList = [...taskList];
+    newTaskList = newTaskList.filter(task => {
+      if (task.id === id) {
+        if (task.completed === false) task.completed = true;
+        else task.completed = false;
+      }
+      return task;
+    });
+    updateTaskList(newTaskList);
   };
+
+  const deleteTask = id => {
+    let newTaskList = [...taskList];
+    newTaskList = newTaskList.filter(task => {
+      if (task.id !== id) return task;
+    });
+    updateTaskList(newTaskList);
+  };
+
   return (
-    <>
+    <Todocontext.Provider value={{ deleteTask, completedTask, updateTask, task, handleSubmit, taskList }}>
       <div className='container'>
-        <AdditemForm {...formProp} />
+        <AdditemForm />
         <Todoitems />
       </div>
-    </>
+    </Todocontext.Provider>
   );
 }
