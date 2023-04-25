@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+html {
+  font-size: 62.5%;
+  /* 1px == 0.1rem */
+}
+
+div#root {
+  background: rgb(0 0 0 /90%);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 40.5rem;
+  margin: 1rem;
+}
+
+.pass-area {
+  font-size: 2rem;
+  font-weight: bold;
+  background: purple;
+  color: white;
+  padding: 0.8rem 1.6rem 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.pass-form-grp {
+  display: flex;
+}
+
+.pass-form-grp input[type="number"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.pass-form-grp button[type="submit"] {
+  background: yellow;
+  border: none;
+  outline: none;
+  padding: 1rem 1.8rem;
+  border-left: 0.4rem solid rgb(0 0 0 /90%) !important;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.pass-form-more label {
+  color: white;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem !important;
+  cursor: pointer;
+}
+
+.pass-form-more input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
