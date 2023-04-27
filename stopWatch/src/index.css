@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+html {
+  font-size: 62.5% !important;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.15rem solid black;
+  border-radius: 0.5rem;
+  max-width: 41rem;
+  background: white;
+}
+
+.wrapper>div:nth-child(1) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.7rem;
+  padding-top: 1rem;
+}
+
+.wrapper>div:nth-child(1) span {
+  background: black;
+  color: white;
+  font-size: 3rem;
+  padding: 1.5rem 2.6rem;
+  position: relative;
+  border-radius: 0.6rem;
+}
+
+.wrapper>div:nth-child(1) span.dy::before {
+  content: "Day";
+}
+
+.wrapper>div:nth-child(1) span.hr::before {
+  content: "Hr";
+}
+
+.wrapper>div:nth-child(1) span.min::before {
+  content: "Min";
+}
+
+.wrapper>div:nth-child(1) span.sec::before {
+  content: "Sec";
+}
+
+.wrapper>div:nth-child(1) span::before {
+  position: absolute;
+  font-size: 1.4rem;
+  background: mediumslateblue;
+  padding: 0.1rem 0.5rem;
+  border-radius: 100vmax;
+  top: -0.2rem;
+  left: -1.1rem;
+  rotate: -40deg;
+}
+
+.cta-grp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cta-grp button {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-weight: bold;
+  transition: background 200ms;
+}
+
+.cta-grp button:nth-child(1):hover {
+  background: rgb(0 128 0 /66%);
+  color: white;
+}
+
+.cta-grp button:nth-child(2):hover {
+  background: rgb(255 69 0 /87%);
+  color: white;
+}
+
+.cta-grp button:nth-child(3):hover {
+  background: yellow;
+  color: black;
+}
