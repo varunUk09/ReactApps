@@ -1,55 +1,73 @@
 import { useState, useEffect } from "react";
-
+let secInterval;
 export default function App() {
-  const [sec, setSec] = useState(50);
-  const [min, setMin] = useState(59);
-  const [hr, setHr] = useState(11);
-  const [dy, setDy] = useState(1);
+  const [sec, setSec] = useState(null);
+  const [min, setMin] = useState(null);
+  const [hr, setHr] = useState(null);
+  const [dy, setDy] = useState(null);
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setSec(preSec => {
-        let newSec = preSec + 1;
+    if (sec === 0) {
+      setMin(prevMin => {
+        let newMin = prevMin + 1;
+        if (newMin < 60) {
+          return newMin;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }, [sec]);
+  useEffect(() => {
+    if (min === 0) {
+      setHr(prevHr => {
+        let newHr = prevHr + 1;
+        if (newHr < 24) {
+          return newHr;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }, [min]);
+  useEffect(() => {
+    if (hr === 0) setDy(prevDy => prevDy + 1);
+  }, [hr]);
+  const startTimer = () => {
+    clearInterval(secInterval);
+    secInterval = setInterval(() => {
+      setSec(prevSec => {
+        let newSec = prevSec + 1;
         if (newSec < 60) {
           return newSec;
         } else {
-          setMin(prevMin => {
-            let newMin = prevMin + 1;
-            if (newMin < 60) {
-              return newMin;
-            } else {
-              setHr(prevHr => {
-                let newHr = prevHr + 1;
-                if (newHr < 12) {
-                  return newHr;
-                } else {
-                  setDy(prevDy => {
-                    let newDy = prevDy + 1;
-                    return newDy;
-                  });
-                  return 0;
-                }
-              });
-              return 0;
-            }
-          });
           return 0;
         }
       });
     }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
+  };
+
+  const stopTimer = () => {
+    clearInterval(secInterval);
+  };
+  const resetTimer = () => {
+    setSec(null);
+    setDy(null);
+    setHr(null);
+    setDy(null);
+    clearInterval(secInterval);
+  };
   return (
     <div className='wrapper'>
       <div>
-        {dy >= 0 && <span className='dy'>{dy}</span>}
-        {hr >= 0 && <span className='hr'>{hr}</span>}
-        {min >= 0 && <span className='min'>{min}</span>}
-        {sec >= 0 && <span className='sec'>{sec}</span>}
+        {dy !== null ? <span className='dy'>{dy}</span> : <span className='dy'>0</span>}
+        {hr !== null ? <span className='hr'>{hr}</span> : <span className='hr'>0</span>}
+        {min !== null ? <span className='min'>{min}</span> : <span className='min'>0</span>}
+        {sec !== null ? <span className='sec'>{sec}</span> : <span className='sec'>0</span>}
       </div>
       <div className='cta-grp'>
-        <button>Start</button>
-        <button>Stop</button>
-        <button>Reset</button>
+        <button onClick={startTimer}>Start</button>
+        <button onClick={stopTimer}>Stop</button>
+        <button onClick={resetTimer}>Reset</button>
       </div>
     </div>
   );
