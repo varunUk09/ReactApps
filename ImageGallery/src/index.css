@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.gallery img {
+  width: 10rem;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  margin: 0.1rem;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0 0 0 /45%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal img {
+  width: 100%;
+  max-width: 55rem;
+}
+
+.modal button {
+  margin-top: 1rem;
+  background: black;
+  color: white;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
