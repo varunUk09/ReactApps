@@ -12,7 +12,10 @@ function App() {
       });
   };
   useEffect(() => {
-    fetchFact();
+    return () => {
+      console.log("component ummounted");
+      fetchFact();
+    };
   }, []);
   return (
     <>
