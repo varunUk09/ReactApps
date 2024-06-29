@@ -1,2 +1,3 @@
 # ReactApps
-This repo contains all my practice react apps
+
+This repo contains all the react apps I have practiced
