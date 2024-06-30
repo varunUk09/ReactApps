@@ -8,7 +8,6 @@ function App() {
   const [todos, setTodo] = useState(getTasks());
   useEffect(
     function () {
-      console.log("Todos : ", todos);
       storeTasks(todos);
     },
     [todos]

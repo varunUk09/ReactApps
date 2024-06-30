@@ -6,7 +6,7 @@ import EditTodo from "./EditTodo";
 export default function Todos() {
   const { todos } = useContext(TodoContext);
   return (
-    <ul>
+    <ul className='todosItems'>
       {todos.map(function (todo) {
         if (todo.isEditing) {
           return <EditTodo key={todo.id} data={todo} />;

@@ -8,15 +8,19 @@ export default function EditTodo({ data }) {
       onSubmit={e => {
         e.preventDefault();
         updateTask(data.id, value);
-      }}>
+      }}
+      className='todoForm'>
       <input
         type='text'
         value={value}
         onChange={e => {
           setValue(e.target.value);
         }}
+        className='todoInput'
       />
-      <button type='submit'>Update</button>
+      <button type='submit' className='todoSubmit todoButton'>
+        Update
+      </button>
     </form>
   );
 }

@@ -6,9 +6,12 @@ export default function TodoForm() {
     <form
       onSubmit={e => {
         addTask(e);
-      }}>
-      <input type='text' placeholder='What is task today?' onChange={e => setTask(e.target.value)} value={task} />
-      <button type='submit'>Add Task</button>
+      }}
+      className='todoForm'>
+      <input type='text' placeholder='What is task today?' onChange={e => setTask(e.target.value)} value={task} className='todoInput' />
+      <button className='todoSubmit todoButton' type='submit'>
+        Add Task
+      </button>
     </form>
   );
 }
