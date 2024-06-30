@@ -1,1 +1,1 @@
-![alt text](brave_227Qx365YC.gif)
+![alt text](image.png)
