@@ -6,6 +6,7 @@ import getTasks, { storeTasks } from "./db";
 function App() {
   const [task, setTask] = useState("");
   const [todos, setTodo] = useState(getTasks());
+  // storing todos to local storage
   useEffect(
     function () {
       storeTasks(todos);

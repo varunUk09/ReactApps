@@ -14,7 +14,7 @@
 
 html body #root {
     background: white;
-    box-shadow: 5px 5px rgba(0 0 0 /90%);
+    box-shadow: 0px 0px 9px -5px rgba(0 0 0 /90%);
     border-radius: 11px;
     padding: 10px;
     width: calc(100% - 20px);
@@ -27,8 +27,9 @@ html body {
     width: 100%;
     background: #FFF7FC;
     justify-content: center;
-    align-items: center;
-    padding: 10px 0;
+    align-items: flex-start;
+    padding: 40px 0;
+    transition: background 0.3s ease-out;
 }
 
 
@@ -66,6 +67,7 @@ html body .todoButton {
     color: white;
     padding: 6px 10px 6px;
     font-size: 12px;
+    transition: all 0.3s ease-out;
 }
 
 html body .todosItems {
@@ -74,6 +76,18 @@ html body .todosItems {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    max-height: 81vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+html body .todosItems:empty {
+    display: none;
+}
+
+/* For WebKit browsers */
+html body .todosItems::-webkit-scrollbar {
+    display: none;
 }
 
 html body .todoItem {
@@ -85,6 +99,12 @@ html body .todoItem {
     align-items: center;
     overflow-wrap: anywhere;
     cursor: pointer;
+}
+
+html body .todoItem.todoCompleted p {
+    text-decoration-color: rgb(87 85 254 / 96%) !important;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
 }
 
 html body .todoItem .todoRadio {
@@ -112,8 +132,6 @@ html body .todoItem * {
     font-size: 12px;
 }
 
-
-
 html body .todoItem p {
     flex: 1;
 }
@@ -126,4 +144,10 @@ html body .todoItemActions {
 
 html body .todoItemActions button {
     border-radius: 5px;
+}
+
+html body .todoCtaTextWrpr {
+    display: flex;
+    grid-gap: 10px;
+    flex: 1;
 }
