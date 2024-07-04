@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playwrite DE Grund", cursive;
+  font-optical-sizing: auto;
+  letter-spacing: 0.8px;
+  font-weight: bold;
+}
+
+:root {
+  --color-light: black;
+  --color-dark: white;
+  --border-light: rgba(0 0 0 / 15%);
+  --border-dark: rgb(0 255 255 / 40%);
+}
+
+html body {
+  --text-color: var(--color-light);
+  --border-color: var(--border-light);
+  --shadowflow: 12px;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  transition: background 0.24s ease-in-out;
+}
+
+html body.dark {
+  --text-color: var(--color-dark);
+  --border-color: var(--border-dark);
+  --shadowflow: -12px;
+  background: black;
+}
+
+html body #root .wrapper {
+  padding: 10px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  user-select: none;
+  gap: 10px;
+  border: 1px solid var(--border-color);
+  margin: 10px;
+  border-radius: 18px;
+  box-shadow: 0px var(--shadowflow) 11px var(--border-color);
+}
+
+html body #root .themeswitch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  width: 100%;
+  justify-content: right;
+  text-decoration: underline;
+}
+
+html body #root .heading {
+  font-size: 24px;
+}
+
+html body #root .content {
+  font-size: 14px;
+}
+
+html body #root .heading,
+html body #root .content,
+html body #root .themeswitch {
+  color: var(--text-color);
+}
