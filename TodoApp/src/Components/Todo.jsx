@@ -17,14 +17,14 @@ export default function Todo({ data }) {
           onClick={() => {
             deleteTodo(data.id);
           }}
-          className='todoButton'>
+          className='Button'>
           Delete
         </button>
         <button
           onClick={() => {
             isEditingTodo(data.id);
           }}
-          className='todoButton'>
+          className='Button'>
           Edit
         </button>
       </div>

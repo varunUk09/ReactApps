@@ -9,16 +9,17 @@ export default function EditTodo({ data }) {
         e.preventDefault();
         updateTask(data.id, value);
       }}
-      className='todoForm'>
+      className='Form'>
       <input
         type='text'
         value={value}
         onChange={e => {
           setValue(e.target.value);
         }}
-        className='todoInput'
+        className='FormInput'
+        required
       />
-      <button type='submit' className='todoSubmit todoButton'>
+      <button type='submit' className='Submit Button'>
         Update
       </button>
     </form>

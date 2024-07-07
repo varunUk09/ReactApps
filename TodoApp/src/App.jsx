@@ -1,81 +1,35 @@
-import TodoForm from "./Components/TodoForm";
-import Todos from "./Components/Todos";
-import Context, { TodoContext } from "./Components/MyContext";
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { MainContext } from "./Components/MyContext";
+import Header from "./Components/Header";
 import { useState, useEffect } from "react";
-import getTasks, { storeTasks } from "./db";
-function App() {
-  const [task, setTask] = useState("");
-  const [todos, setTodo] = useState(getTasks());
-  // storing todos to local storage
+import UsernameForm from "./Components/UsernameForm";
+import { getUserName, storeUserName, initShowNameForm } from "./db";
+// import ModalOverlay from "./Components/ModalOverlay";
+import "./App.css";
+export default function App() {
+  const [username, setUsername] = useState(getUserName() || "");
+  const [showUserNameForm, setShowUserNameForm] = useState(initShowNameForm());
+  const updateUsername = value => {
+    setUsername(function () {
+      setShowUserNameForm(false);
+      return value.toLowerCase();
+    });
+  };
+  // storing userName to local storage
   useEffect(
     function () {
-      storeTasks(todos);
+      storeUserName(username);
     },
-    [todos]
+    [username]
   );
-  const deleteTodo = id => {
-    setTodo(function (oldValues) {
-      return oldValues.filter(item => item.id !== id);
-    });
-  };
-  const isEditingTodo = id => {
-    setTodo(function (oldValues) {
-      return oldValues.map(function (item) {
-        if (item.id === id) {
-          item.isEditing = !item.isEditing;
-        }
-        return item;
-      });
-    });
-  };
-  const isCompletedTodo = id => {
-    setTodo(function (oldValues) {
-      return oldValues.map(function (item) {
-        if (item.id === id) {
-          item.isCompleted = !item.isCompleted;
-        }
-        return item;
-      });
-    });
-  };
-  const addTask = e => {
-    e.preventDefault();
-    if (task.trim() !== "") {
-      setTodo(function (oldValues) {
-        setTask("");
-        return [
-          ...oldValues,
-          {
-            id: Date.now(),
-            task: task,
-            isEditing: false,
-            isCompleted: false,
-          },
-        ];
-      });
-    }
-  };
-  const updateTask = (id, updatedValue) => {
-    setTodo(function (oldValues) {
-      return oldValues.map(function (item) {
-        if (item.id === id) {
-          item.task = updatedValue;
-          item.isEditing = !item.isEditing;
-        }
-        return item;
-      });
-    });
-  };
   return (
-    <div className='TodoWrapper'>
-      <Context.Provider value={{ task, setTask, addTask }}>
-        <TodoForm />
-        <TodoContext.Provider value={{ todos, deleteTodo, isEditingTodo, isCompletedTodo, updateTask }}>
-          <Todos />
-        </TodoContext.Provider>
-      </Context.Provider>
-    </div>
+    <>
+      <MainContext.Provider value={{ username, updateUsername, showUserNameForm, setShowUserNameForm }}>
+        <Header username={username} />
+        <Outlet />
+        {showUserNameForm == true ? <UsernameForm /> : null}
+      </MainContext.Provider>
+    </>
   );
 }
-
-export default App;

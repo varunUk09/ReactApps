@@ -12,35 +12,48 @@
     font-weight: bold;
 }
 
-html body #root {
-    background: white;
-    box-shadow: 0px 0px 9px -5px rgba(0 0 0 /90%);
-    border-radius: 11px;
-    padding: 10px;
-    width: calc(100% - 20px);
-    max-width: 400px;
+:root {
+    --clrPrimary: rgb(87 85 254 / 96%);
+    --clrSecondary: black;
+    --clrTernory: white;
+    --bodyClr: rgb(87 85 254 / 8%);
+}
+
+html body .Wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 0;
 }
 
 html body {
     min-height: 100vh;
     display: flex;
     width: 100%;
-    background: #FFF7FC;
+    background: var(--bodyClr);
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 0;
     transition: background 0.3s ease-out;
 }
 
-
-html body .todoForm {
-    display: flex;
-    justify-content: space-between;
+html body.dark {
+    --bodyClr: black;
+    --clrPrimary: black;
+    --clrSecondary: white;
 }
 
-html body .todoInput {
+
+html body .Form {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0px 0px 9px -5px rgba(0 0 0 / 90%);
+    border-radius: 11px;
+    padding: 10px;
+}
+
+html body .FormInput {
     flex: 1;
-    border: 2px solid #5755FE;
+    border: 2px solid var(--clrPrimary);
     border-radius: 5px 0 0 5px;
     outline: none;
     padding: 6px 8px 6px;
@@ -51,16 +64,16 @@ html body .todoInput {
     vertical-align: middle;
 }
 
-html body .todoInput::placeholder {
+html body .FormInput::placeholder {
     color: rgb(0 0 0 / 40%);
 }
 
-html body .todoSubmit {
+html body .Submit {
     border-radius: 0 5px 5px 0;
 }
 
-html body .todoButton {
-    background: rgb(87 85 254 / 96%);
+html body .Button {
+    background: var(--clrPrimary);
     border: none;
     outline: none;
     cursor: pointer;
@@ -72,11 +85,10 @@ html body .todoButton {
 
 html body .todosItems {
     list-style: none;
-    margin-top: 7px;
+    margin-top: 22px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    max-height: 81vh;
+    gap: 10px;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -99,10 +111,13 @@ html body .todoItem {
     align-items: center;
     overflow-wrap: anywhere;
     cursor: pointer;
+    background: white;
+    border-radius: 11px;
+    padding: 10px;
 }
 
 html body .todoItem.todoCompleted p {
-    text-decoration-color: rgb(87 85 254 / 96%) !important;
+    text-decoration-color: var(--clrPrimary) !important;
     text-decoration: line-through;
     text-decoration-thickness: 1.5px;
 }
@@ -110,7 +125,7 @@ html body .todoItem.todoCompleted p {
 html body .todoItem .todoRadio {
     min-width: 19px;
     min-height: 19px;
-    border: 2px solid rgb(87 85 254 / 96%);
+    border: 2px solid var(--clrPrimary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,7 +138,7 @@ html body .todoItem.todoCompleted .todoRadio::before {
     content: '';
     width: 70%;
     height: 70%;
-    background: rgb(87 85 254 / 96%);
+    background: var(--clrPrimary);
     display: block;
     border-radius: 100vmax;
 }
@@ -150,4 +165,127 @@ html body .todoCtaTextWrpr {
     display: flex;
     grid-gap: 10px;
     flex: 1;
+}
+
+html body #root {
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0;
+}
+
+html body .headerLogo {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+html body .headerItems {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+html body .headerItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+html body .headerTextArea {
+    font-size: 15px;
+    color: var(--clrSecondary);
+}
+
+html body #headerUserName {
+    position: relative;
+    margin-left: 6px;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    padding: 0;
+    border: 0;
+    text-transform: capitalize;
+    color: var(--clrSecondary);
+}
+
+html body #headerUserName::after {
+    content: '';
+    position: absolute;
+    background: rgb(87 85 254 / 96%);
+    height: 2px;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+}
+
+html body .headerLogoWrapper {
+    cursor: pointer;
+}
+
+html body .UserNameFromWrapper {
+    position: fixed;
+    top: 21px;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 100%;
+    max-width: 300px;
+    z-index: 2;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 9px -5px rgba(0 0 0 / 90%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+html body .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(0 0 0 /50%);
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    backdrop-filter: blur(3px);
+}
+
+html body #UsernameForm {
+    box-shadow: none;
+    padding: 0;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    border-radius: 100vmax;
+    cursor: pointer;
+    background: rgb(87 85 254 / 96%);
+}
+
+.toggle.active {
+    background: white;
+}
+
+
+.toggle-inner {
+    position: absolute;
+    top: 50%;
+    left: 11%;
+    height: 63%;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform: translateY(-50%);
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle.active .toggle-inner {
+    background-color: black;
+    transform: translateY(-50%) translateX(30px);
 }
