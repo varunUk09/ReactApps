@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MainContext } from "./MyContext";
 import ToggleButton from "./ToggleButton";
-import logo from "../logo.svg";
+import logo from "../assets/logo.svg";
 export default function Header() {
   const { username, setShowUserNameForm } = useContext(MainContext);
   return (
