@@ -1,26 +1,9 @@
-import { useState, useEffect } from "react";
+import { HeaderContext } from "./MyContext";
+import { useContext } from "react";
 export default function ToggleButton() {
-  const [isActive, setActive] = useState(false);
-  const updateTheme = () => {
-    setActive(!isActive);
-  };
-  useEffect(
-    function () {
-      if (isActive) {
-        document.body.classList.add("dark");
-      } else {
-        document.body.classList.remove("dark");
-      }
-
-      // Cleanup function
-      return () => {
-        document.body.classList.remove("dark");
-      };
-    },
-    [isActive]
-  );
+  const { isDarkTheme, updateTheme } = useContext(HeaderContext);
   return (
-    <div className={`toggle ${isActive ? "active" : ""}`} id='toggleBtn' onClick={updateTheme}>
+    <div className={`toggle ${isDarkTheme ? "active" : ""}`} id='toggleBtn' onClick={updateTheme}>
       <div className='toggle-inner'></div>
     </div>
   );

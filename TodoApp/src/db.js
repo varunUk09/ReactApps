@@ -23,5 +23,11 @@ const initShowNameForm = function () {
         return false;
     }
 }
+const storeTheme = function (value) {
+    localStorage.setItem("theme", JSON.stringify(value));
+}
+const getTheme = function () {
+    return JSON.parse(localStorage.getItem('theme') || false);
+}
 export default getTasks;
-export { storeTasks, getUserName, storeUserName, initShowNameForm };
+export { storeTasks, getUserName, storeUserName, initShowNameForm, storeTheme, getTheme };
