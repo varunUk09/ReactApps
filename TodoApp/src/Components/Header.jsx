@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MainContext } from "./MyContext";
 import ToggleButton from "./ToggleButton";
+import logo from "../logo.svg";
 export default function Header() {
   const { username, setShowUserNameForm } = useContext(MainContext);
   return (
@@ -9,7 +10,7 @@ export default function Header() {
       <ul className='headerItems'>
         <li className='headerItem'>
           <Link to={"/"} className='headerLogoWrapper'>
-            <img src='../logo.svg' className='headerLogo' />
+            <img src={logo} className='headerLogo' />
           </Link>
           <p className='headerTextArea'>
             Hey,
